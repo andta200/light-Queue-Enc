@@ -29,7 +29,7 @@ async def stats(e):
         await e.answer(ans, cache_time=0, alert=True)
     except Exception as er:
         LOGS.info(er)
-        await e.answer("Someting Went Wrong 🤔\nResend Media", cache_time=0, alert=True)
+        await e.answer("Error 404: File | Info not Found 🤔\nMaybe Bot was restarted\nKindly Resend Media", cache_time=0, alert=True)
 
 
 async def dl_link(event):
@@ -50,7 +50,7 @@ async def dl_link(event):
         return await event.reply(f"Added {link} in QUEUE")
     WORKING.append(1)
     s = dt.now()
-    xxx = await event.reply("`Downloading...`")
+    xxx = await event.reply("`➟ Downloading…`")
     try:
         dl = await fast_download(xxx, link, name)
     except Exception as er:
@@ -61,7 +61,7 @@ async def dl_link(event):
     kk = dl.split("/")[-1]
     aa = kk.split(".")[-1]
     rr = "encode"
-    bb = kk.replace(f".{aa}", "_compressed.mkv")
+    bb = kk.replace(f".{aa}", " [Encoded].mkv")
     out = f"{rr}/{bb}"
     thum = "thumb.jpg"
     dtime = ts(int((es - s).seconds) * 1000)
@@ -91,14 +91,14 @@ async def dl_link(event):
     ees = dt.now()
     ttt = time.time()
     await nn.delete()
-    nnn = await xxx.client.send_message(xxx.chat_id, "`Uploading...`")
+    nnn = await xxx.client.send_message(xxx.chat_id, "**Encoding Completed Successfully** `(I Think)`\n`🔺Uploading🔺`")
     with open(out, "rb") as f:
         ok = await upload_file(
             client=xxx.client,
             file=f,
             name=out,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, nnn, ttt, "uploading..")
+                progress(d, t, nnn, ttt, "`▲ Uploading ▲`")
             ),
         )
     ds = await xxx.client.send_file(
@@ -151,14 +151,14 @@ async def encod(event):
             # id = pack_bot_file_id(event.media)
             doc = event.media.document
             if doc.id in list(QUEUE.keys()):
-                return await xxx.edit("`THIS FILE ALREADY IN QUEUE`")
+                return await xxx.edit("**THIS FILE HAS ALREADY BEEN ADDED TO QUEUE**")
             name = event.file.name
             if not name:
                 name = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
             QUEUE.update({doc.id: [name, doc]})
-            return await xxx.edit("`Added This File in Queue`")
+            return await xxx.edit("**Added To Queue ⏰,** \n`Please Wait , Compress will start soon`")
         WORKING.append(1)
-        xxx = await event.reply("`Downloading...`")
+        xxx = await event.reply("`Download Pending…` \n**(Waiting For Connection)**")
         s = dt.now()
         ttt = time.time()
         dir = f"downloads/"
@@ -180,7 +180,7 @@ async def encod(event):
                                 t,
                                 xxx,
                                 ttt,
-                                "Downloading",
+                                "`➟ Downloading…`",
                             )
                         ),
                     )
@@ -189,7 +189,7 @@ async def encod(event):
                     event.media,
                     dir,
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, xxx, ttt, "Downloading")
+                        progress(d, t, xxx, ttt, "`➟ Downloading…`)
                     ),
                 )
         except Exception as er:
@@ -231,14 +231,14 @@ async def encod(event):
         ees = dt.now()
         ttt = time.time()
         await nn.delete()
-        nnn = await e.client.send_message(e.chat_id, "`Uploading...`")
+        nnn = await e.client.send_message(e.chat_id, "`▲ Uploading ▲`")
         with open(out, "rb") as f:
             ok = await upload_file(
                 client=e.client,
                 file=f,
                 name=out,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, nnn, ttt, "uploading..")
+                    progress(d, t, nnn, ttt, "`🔺 uploading 🔺`")
                 ),
             )
         ds = await e.client.send_file(

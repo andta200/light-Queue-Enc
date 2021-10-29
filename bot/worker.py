@@ -68,7 +68,7 @@ async def dl_link(event):
     hehe = f"{out};{dl};0"
     wah = code(hehe)
     nn = await xxx.edit(
-        "`Compressing..`",
+        "`Encoding Files…` \n**⏳This Might Take A While⏳**",
         buttons=[
             [Button.inline("STATS", data=f"stats{wah}")],
             [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],

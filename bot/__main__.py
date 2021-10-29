@@ -101,7 +101,7 @@ async def something():
         try:
             if not WORKING and QUEUE:
                 user = int(OWNER.split()[0])
-                e = await bot.send_message(user, "Downloding Queue Files")
+                e = await bot.send_message(user, "`▼ Downloding Queue Files ▼`")
                 s = dt.now()
                 try:
                     if isinstance(QUEUE[list(QUEUE.keys())[0]], str):
@@ -123,7 +123,7 @@ async def something():
                                         t,
                                         e,
                                         tt,
-                                        "Downloading",
+                                        "`Downloading…`",
                                     )
                                 ),
                             )
@@ -135,14 +135,14 @@ async def something():
                 kk = dl.split("/")[-1]
                 aa = kk.split(".")[-1]
                 rr = "encode"
-                bb = kk.replace(f".{aa}", " compressed.mkv")
+                bb = kk.replace(f".{aa}", " [Encoded].mkv")
                 out = f"{rr}/{bb}"
                 thum = "thumb.jpg"
                 dtime = ts(int((es - s).seconds) * 1000)
                 hehe = f"{out};{dl};{list(QUEUE.keys())[0]}"
                 wah = code(hehe)
                 nn = await e.edit(
-                    "`Compressing..`",
+                    "`Encoding Files…` \n**⏳This Might Take A While⏳**",
                     buttons=[
                         [Button.inline("STATS", data=f"stats{wah}")],
                         [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
@@ -166,14 +166,14 @@ async def something():
                 ees = dt.now()
                 ttt = time.time()
                 await nn.delete()
-                nnn = await e.client.send_message(e.chat_id, "`Uploading...`")
+                nnn = await e.client.send_message(e.chat_id, "`▲ Uploading...`")
                 with open(out, "rb") as f:
                     ok = await upload_file(
                         client=e.client,
                         file=f,
                         name=out,
                         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                            progress(d, t, nnn, ttt, "uploading..")
+                            progress(d, t, nnn, ttt, "`🔺Uploading🔺`")
                         ),
                     )
                 ds = await e.client.send_file(

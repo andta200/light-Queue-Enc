@@ -29,12 +29,13 @@ async def up(event):
 
 async def start(event):
     await event.reply(
-        f"Hi `{event.sender.first_name}`\nThis is A CompressorQueue Which Can Encode Videos.\nReduce Size of Videos With Negligible Quality Change\nU can Generate Samples/screenshots too.",
+        f"Hi `{event.sender.first_name}`\nThis Is A Bot Which Can Encode Videos.\nReduce Size of Videos With Negligible Quality Change\nAnd can Generate Samples/screenshots too.\nOhh And It's For Personal Use Only! 😗",
         buttons=[
             [Button.inline("HELP", data="ihelp")],
             [
-                Button.url("SOURCE CODE", url="github.com/1Danish-00/"),
+                Button.url("SOURCE CODE (Original)", url="github.com/1Danish-00/"),
                 Button.url("DEVELOPER", url="t.me/danish_00"),
+Button.url("Maintainer", url="t.me/itsjust_r"),
             ],
         ],
     )
@@ -59,8 +60,9 @@ async def beck(event):
         buttons=[
             [Button.inline("HELP", data="ihelp")],
             [
-                Button.url("SOURCE CODE", url="github.com/1Danish-00/"),
+                Button.url("SOURCE CODE (Original)", url="github.com/1Danish-00/"),
                 Button.url("DEVELOPER", url="t.me/danish_00"),
+Button.url("Maintainer", url="t.me/itsjust_r"),
             ],
         ],
     )

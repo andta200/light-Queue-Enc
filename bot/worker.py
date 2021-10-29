@@ -189,7 +189,7 @@ async def encod(event):
                     event.media,
                     dir,
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, xxx, ttt, "`Downloading…`)
+                        progress(d, t, xxx, ttt, "`Downloading`)
                     ),
                 )
         except Exception as er:

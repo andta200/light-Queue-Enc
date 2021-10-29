@@ -29,7 +29,11 @@ async def stats(e):
         await e.answer(ans, cache_time=0, alert=True)
     except Exception as er:
         LOGS.info(er)
-        await e.answer("Error 404: File | Info not Found 🤔\nMaybe Bot was restarted\nKindly Resend Media", cache_time=0, alert=True)
+        await e.answer(
+            "Error 404: File | Info not Found 🤔\nMaybe Bot was restarted\nKindly Resend Media",
+            cache_time=0,
+            alert=True,
+        )
 
 
 async def dl_link(event):
@@ -91,7 +95,9 @@ async def dl_link(event):
     ees = dt.now()
     ttt = time.time()
     await nn.delete()
-    nnn = await xxx.client.send_message(xxx.chat_id, "**Encoding Completed Successfully** `(I Think)`\n`🔺Uploading🔺`")
+    nnn = await xxx.client.send_message(
+        xxx.chat_id, "**Encoding Completed Successfully** `(I Think)`\n`🔺Uploading🔺`"
+    )
     with open(out, "rb") as f:
         ok = await upload_file(
             client=xxx.client,
@@ -156,7 +162,9 @@ async def encod(event):
             if not name:
                 name = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
             QUEUE.update({doc.id: [name, doc]})
-            return await xxx.edit("**Added To Queue ⏰,** \n`Please Wait , Compress will start soon`")
+            return await xxx.edit(
+                "**Added To Queue ⏰,** \n`Please Wait , Compress will start soon`"
+            )
         WORKING.append(1)
         xxx = await event.reply("`Download Pending…` \n**(Waiting For Connection)**")
         s = dt.now()

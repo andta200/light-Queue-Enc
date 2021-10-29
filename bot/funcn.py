@@ -98,14 +98,11 @@ async def progress(current, total, event, start, type_of_ps, file=None):
             "".join(["🤍" for i in range(10 - math.floor(percentage / 10))]),
             round(percentage, 4),
         )
-        tmp = (
-            progress_str
-            + "**Completed**: `{0} of {1}`\n**Speed**: `{2}/s` \n**ETA**: `{3}` \n".format(
-                hbs(current),
-                hbs(total),
-                hbs(speed),
-                ts(time_to_completion),
-            )
+        tmp = progress_str + "**Completed**: `{0} of {1}`\n**Speed**: `{2}/s` \n**ETA**: `{3}` \n".format(
+            hbs(current),
+            hbs(total),
+            hbs(speed),
+            ts(time_to_completion),
         )
         if file:
             await event.edit(

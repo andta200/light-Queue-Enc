@@ -180,7 +180,7 @@ async def encod(event):
                                 t,
                                 xxx,
                                 ttt,
-                                "`Downloading…`",
+                                "Downloading",
                             )
                         ),
                     )

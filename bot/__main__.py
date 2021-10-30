@@ -123,7 +123,7 @@ async def something():
                                         t,
                                         e,
                                         tt,
-                                        "`Downloading…`",
+                                        "Downloading…",
                                     )
                                 ),
                             )

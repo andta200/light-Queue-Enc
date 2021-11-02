@@ -27,5 +27,5 @@ jobs:
           commit_options: '--no-verify'
           repository: .
           commit_user_name: Col-Serra
-          commit_user_email: itsjustplainr@gmail.com
-          commit_author: Col-Serra <itsjustplainr@gmail.com>
+          commit_user_email: 79519115+Col-Serra@users.noreply.github.com
+          commit_author: Col-Serra <79519115+Col-Serra@users.noreply.github.com>

@@ -66,7 +66,7 @@ def ts(milliseconds: int) -> str:
 def hbs(size):
     if not size:
         return ""
-    power = 2 ** 10
+    power = 2**10
     raised_to_pow = 0
     dict_power_n = {0: "B", 1: "K", 2: "M", 3: "G", 4: "T", 5: "P"}
     while size > power:
@@ -98,11 +98,14 @@ async def progress(current, total, event, start, type_of_ps, file=None):
             "".join(["🤍" for i in range(10 - math.floor(percentage / 10))]),
             round(percentage, 4),
         )
-        tmp = progress_str + "**Completed**: `{0} of {1}`\n**Speed**: `{2}/s` \n**ETA**: `{3}` \n".format(
-            hbs(current),
-            hbs(total),
-            hbs(speed),
-            ts(time_to_completion),
+        tmp = (
+            progress_str
+            + "**Completed**: `{0} of {1}`\n**Speed**: `{2}/s` \n**ETA**: `{3}` \n".format(
+                hbs(current),
+                hbs(total),
+                hbs(speed),
+                ts(time_to_completion),
+            )
         )
         if file:
             await event.edit(

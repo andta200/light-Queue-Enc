@@ -14,13 +14,13 @@
 # https://github.com/1Danish-00/CompressorQueue/blob/main/License> .
 
 
-import logging
 import asyncio
 import glob
 import inspect
 import io
 import itertools
 import json
+import logging
 import math
 import os
 import re
@@ -47,7 +47,6 @@ from .config import *
 LOG_FILE_NAME = "Logs.txt"
 
 
-
 if os.path.exists(LOG_FILE_NAME):
     with open(LOG_FILE_NAME, "r+") as f_d:
         f_d.truncate(0)
@@ -57,13 +56,9 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
-        RotatingFileHandler(
-            LOG_FILE_NAME,
-            maxBytes=2097152000,
-            backupCount=10
-        ),
-        logging.StreamHandler()
-    ]
+        RotatingFileHandler(LOG_FILE_NAME, maxBytes=2097152000, backupCount=10),
+        logging.StreamHandler(),
+    ],
 )
 logging.getLogger("FastTelethon").setLevel(logging.INFO)
 logging.getLogger("urllib3").setLevel(logging.INFO)
@@ -80,5 +75,4 @@ except Exception as e:
 
 
 async def startup():
-    await bot.send_message(int(OWNER.split()[0]),"**I'm Up! 😎**")
-    
+    await bot.send_message(int(OWNER.split()[0]), "**I'm Up! 😎**")

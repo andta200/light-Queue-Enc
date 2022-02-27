@@ -25,13 +25,13 @@ from .worker import *
 
 
 async def getlogs(event):
-    if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
+    if str(event.sender_id) not in OWNER and event.sender_id != DEV:
         return
     await event.client.send_file(event.chat_id, file=LOG_FILE_NAME, force_document=True)
 
 
 async def clean(event):
-    if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
+    if str(event.sender_id) not in OWNER and event.sender_id != DEV:
         return
     await event.reply("**Cleared Queued, Working Files and Cached Downloads!**")
     WORKING.clear()
@@ -41,9 +41,9 @@ async def clean(event):
     for proc in psutil.process_iter():
         processName = proc.name()
         processID = proc.pid
-        print(processName , ' - ', processID)
-        if (processName == "ffmpeg"):
-         os.kill (processID,signal.SIGKILL)
+        print(processName, " - ", processID)
+        if processName == "ffmpeg":
+            os.kill(processID, signal.SIGKILL)
     return
 
 
@@ -57,14 +57,20 @@ async def restart(event):
         await event.reply("Error Occurred")
         LOGS.info(str(err))
 
+
 async def getthumb(event):
-    if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
+    if str(event.sender_id) not in OWNER and event.sender_id != DEV:
         return
-    await event.client.send_file(event.chat_id, file="/bot/thumb.jpg", force_document=False, caption="**Your Current Thumbnail.**")
+    await event.client.send_file(
+        event.chat_id,
+        file="/bot/thumb.jpg",
+        force_document=False,
+        caption="**Your Current Thumbnail.**",
+    )
 
 
 async def clearqueue(event):
-    if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
+    if str(event.sender_id) not in OWNER and event.sender_id != DEV:
         return
     await event.reply("**Cleared Queued Files!**")
     QUEUE.clear()
@@ -72,13 +78,13 @@ async def clearqueue(event):
 
 
 async def thumb(event):
-        if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
-            return await event.reply_text("**Well That Ain't Right!**")
-        if not event.photo:
-            return
-        os.system("rm thumb.jpg")
-        await event.client.download_media(event.media, file="/bot/thumb.jpg")
-        await event.reply("**Thumbnail Saved Successfully.**")
+    if str(event.sender_id) not in OWNER and event.sender_id != DEV:
+        return await event.reply_text("**Well That Ain't Right!**")
+    if not event.photo:
+        return
+    os.system("rm thumb.jpg")
+    await event.client.download_media(event.media, file="/bot/thumb.jpg")
+    await event.reply("**Thumbnail Saved Successfully.**")
 
 
 async def stats(e):

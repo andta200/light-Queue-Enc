@@ -13,10 +13,13 @@
 # License can be found in <
 # https://github.com/1Danish-00/CompressorQueue/blob/main/License> .
 
-import shutil, psutil
+import shutil
 
-from .worker import *
+import psutil
+
 from .util import get_readable_file_size
+from .worker import *
+
 
 async def up(event):
     if not event.is_private:
@@ -34,7 +37,7 @@ async def status(event):
         return
     ed = dt.now()
     currentTime = ts(int((ed - uptime).seconds) * 1000)
-    total, used, free = shutil.disk_usage('.')
+    total, used, free = shutil.disk_usage(".")
     total = get_readable_file_size(total)
     used = get_readable_file_size(used)
     free = get_readable_file_size(free)
@@ -42,17 +45,17 @@ async def status(event):
     recv = get_readable_file_size(psutil.net_io_counters().bytes_recv)
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
-    disk = psutil.disk_usage('/').percent
+    disk = psutil.disk_usage("/").percent
     await event.reply(
-         f'**Bot Uptime:** `{currentTime}`\n' \
-            f'**Total Disk Space:** `{total}`\n' \
-            f'**Used:** `{used}` ' \
-            f'**Free:** `{free}`\n\n' \
-            f'**Upload:** `{sent}`\n' \
-            f'**Download:** `{recv}`\n\n' \
-            f'**CPU:** `{cpuUsage}%` ' \
-            f'**RAM:** `{memory}%` ' \
-            f'**DISK:** `{disk}%`'
+        f"**Bot Uptime:** `{currentTime}`\n"
+        f"**Total Disk Space:** `{total}`\n"
+        f"**Used:** `{used}` "
+        f"**Free:** `{free}`\n\n"
+        f"**Upload:** `{sent}`\n"
+        f"**Download:** `{recv}`\n\n"
+        f"**CPU:** `{cpuUsage}%` "
+        f"**RAM:** `{memory}%` "
+        f"**DISK:** `{disk}%`"
     )
 
 
@@ -95,4 +98,3 @@ async def beck(event):
             [Button.url("Maintainer ✌️", url="t.me/itsjust_r")],
         ],
     )
-    

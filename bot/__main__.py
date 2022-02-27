@@ -193,7 +193,11 @@ async def something():
                     )
                 fname = out.split("/")[1]
                 ds = await e.client.send_file(
-                    e.chat_id, file=ok, force_document=True, thumb=thum, caption=f"`{fname}`\n**© @RsTvEncodes**"
+                    e.chat_id,
+                    file=ok,
+                    force_document=True,
+                    thumb=thum,
+                    caption=f"`{fname}`\n**© @RsTvEncodes**",
                 )
                 await nnn.delete()
                 org = int(Path(dl).stat().st_size)

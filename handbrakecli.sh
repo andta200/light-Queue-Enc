@@ -1,7 +1,8 @@
 #!/bin/bash
-# Configure these as needed
+# Configure these as needed except MARKER else encoding will fail
 SRC=downloads
 DEST=encode
+MARKER=[@RsTvEncodes]
 DEST_EXT=mkv
 HANDBRAKE_CLI=HandBrakeCLI
 PRESET="Fast 480p30"
@@ -12,5 +13,5 @@ do
 filename=$(basename $FILE)
 extension=${filename##*.}
 filename=${filename%.*}
-$HANDBRAKE_CLI -i $SRC/$FILE -o "$DEST/$filename [Encoded].$DEST_EXT"  -e x265 --encoder-preset slow  -q 30 -b 420 -X 852 -Y 480 -a "1,2" -E "aac" -6 stereo -B 32 -s "1,2,3,4,5,6,7" -S "[Telegram: @Rscommunity] [Unknown],[Telegram: @Rscommunity] [UNKNOWN| SDH]" -A "[Telegram: @RsTvSeries] ➟" --ssa-file "Input.ass" --ssa-burn=1
+$HANDBRAKE_CLI -i $SRC/$FILE -o "$DEST/$filename $MARKER.$DEST_EXT"  -e x265 --encoder-preset slow  -q 30 -b 420 -X 852 -Y 480 -a "1,2" -E "aac" -6 stereo -B 32 -s "1,2,3,4,5,6,7" -S "[Telegram: @Rscommunity] [Unknown],[Telegram: @Rscommunity] [UNKNOWN| SDH]" -A "[Telegram: @RsTvSeries] ➟" --ssa-file "Input.ass" --ssa-burn=1
 done

@@ -52,6 +52,16 @@ async def _(e):
     await dl_link(e)
 
 
+@bot.on(events.NewMessage(pattern="/thumbnail"))
+async def _(e):
+    await thumbnail(e)
+
+
+@bot.on(events.NewMessage(pattern="/restart"))
+async def _(e):
+    await restart(e)
+
+
 ######## Callbacks #########
 
 
@@ -86,6 +96,11 @@ async def _(e):
 @bot.on(events.NewMessage(pattern="/bash"))
 async def _(e):
     await bash(e)
+
+
+@bot.on(events.NewMessage(pattern="/status"))
+async def _(e):
+    await status(e)
 
 
 ########## AUTO ###########
@@ -135,7 +150,7 @@ async def something():
                 kk = dl.split("/")[-1]
                 aa = kk.split(".")[-1]
                 rr = "encode"
-                bb = kk.replace(f".{aa}", " [Encoded].mkv")
+                bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
                 out = f"{rr}/{bb}"
                 thum = "thumb.jpg"
                 dtime = ts(int((es - s).seconds) * 1000)
@@ -176,8 +191,9 @@ async def something():
                             progress(d, t, nnn, ttt, "🔺Uploading🔺")
                         ),
                     )
+                fname = out.split("/")[1]
                 ds = await e.client.send_file(
-                    e.chat_id, file=ok, force_document=True, thumb=thum
+                    e.chat_id, file=ok, force_document=True, thumb=thum, caption=f"`{fname}`\n**© @RsTvEncodes**"
                 )
                 await nnn.delete()
                 org = int(Path(dl).stat().st_size)

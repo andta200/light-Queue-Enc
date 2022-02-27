@@ -13,8 +13,10 @@
 # License can be found in <
 # https://github.com/1Danish-00/CompressorQueue/blob/main/License> .
 
-from .worker import *
+import shutil, psutil
 
+from .worker import *
+from .util import get_readable_file_size
 
 async def up(event):
     if not event.is_private:
@@ -27,16 +29,43 @@ async def up(event):
     await event.reply(v + "\n" + p)
 
 
+async def status(event):
+    if not event.is_private:
+        return
+    ed = dt.now()
+    currentTime = ts(int((ed - uptime).seconds) * 1000)
+    total, used, free = shutil.disk_usage('.')
+    total = get_readable_file_size(total)
+    used = get_readable_file_size(used)
+    free = get_readable_file_size(free)
+    sent = get_readable_file_size(psutil.net_io_counters().bytes_sent)
+    recv = get_readable_file_size(psutil.net_io_counters().bytes_recv)
+    cpuUsage = psutil.cpu_percent(interval=0.5)
+    memory = psutil.virtual_memory().percent
+    disk = psutil.disk_usage('/').percent
+    await event.reply(
+         f'**Bot Uptime:** `{currentTime}`\n' \
+            f'**Total Disk Space:** `{total}`\n' \
+            f'**Used:** `{used}` ' \
+            f'**Free:** `{free}`\n\n' \
+            f'**Upload:** `{sent}`\n' \
+            f'**Download:** `{recv}`\n\n' \
+            f'**CPU:** `{cpuUsage}%` ' \
+            f'**RAM:** `{memory}%` ' \
+            f'**DISK:** `{disk}%`'
+    )
+
+
 async def start(event):
     await event.reply(
         f"Hi `{event.sender.first_name}`\nThis Is A Bot Which Can Encode Videos.\nReduce Size of Videos With Negligible Quality Change\nAnd can Generate Samples/screenshots too.\nOhh And It's For Personal Use Only! 😗",
         buttons=[
             [Button.inline("HELP", data="ihelp")],
             [
-                Button.url("SOURCE CODE (Original)", url="github.com/1Danish-00/"),
+                Button.url("SOURCE (Original)", url="github.com/1Danish-00/"),
                 Button.url("DEVELOPER", url="t.me/danish_00"),
-                Button.url("Maintainer", url="t.me/itsjust_r"),
             ],
+            [Button.url("Maintainer ✌️", url="t.me/itsjust_r")],
         ],
     )
 
@@ -60,9 +89,10 @@ async def beck(event):
         buttons=[
             [Button.inline("HELP", data="ihelp")],
             [
-                Button.url("SOURCE CODE (Original)", url="github.com/1Danish-00/"),
+                Button.url("SOURCE (Original)", url="github.com/1Danish-00/"),
                 Button.url("DEVELOPER", url="t.me/danish_00"),
-                Button.url("Maintainer", url="t.me/itsjust_r"),
             ],
+            [Button.url("Maintainer ✌️", url="t.me/itsjust_r")],
         ],
     )
+    

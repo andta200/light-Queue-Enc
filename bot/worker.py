@@ -14,6 +14,10 @@
 # https://github.com/1Danish-00/CompressorQueue/blob/main/License> .
 
 
+import shutil, psutil
+
+from .worker import *
+from .util import get_readable_file_size
 from .FastTelethon import download_file, upload_file
 from .funcn import *
 
@@ -25,16 +29,63 @@ async def stats(e):
         out, dl, id = wh.split(";")
         ot = hbs(int(Path(out).stat().st_size))
         ov = hbs(int(Path(dl).stat().st_size))
-        ans = f"Downloaded:\n{ov}\n\nCompressing:\n{ot}"
+        ed = dt.now()
+        name = dl.split("/")[1]
+        input = (name[:45] + '…') if len(name) > 45  else name
+        currentTime = ts(int((ed - uptime).seconds) * 1000)
+        total, used, free = shutil.disk_usage('.')
+        total = get_readable_file_size(total)
+        used = get_readable_file_size(used)
+        free = get_readable_file_size(free)
+        sent = get_readable_file_size(psutil.net_io_counters().bytes_sent)
+        recv = get_readable_file_size(psutil.net_io_counters().bytes_recv)
+        cpuUsage = psutil.cpu_percent(interval=0.5)
+        memory = psutil.virtual_memory().percent
+        disk = psutil.disk_usage('/').percent                                 
+        ans = f"CPU: {cpuUsage}%\n\nTotal Disk Space:\n{total}\n\nDownloaded:\n{ov}\n\nFileName:\n{input}\n\nCompressing:\n{ot}\n\nBot Uptime:\n{currentTime}\n\nUsed: {used}  Free: {free}"
         await e.answer(ans, cache_time=0, alert=True)
     except Exception as er:
         LOGS.info(er)
+        ed = dt.now()
+        currentTime = ts(int((ed - uptime).seconds) * 1000)
+        total, used, free = shutil.disk_usage('.')
+        total = get_readable_file_size(total)
+        info = f"Error 404: File | Info not Found 🤔\nMaybe Bot was restarted\nKindly Resend Media\n\nOther Info\n═══════════\nBot Uptime: {currentTime}\n\nTotal Disk Space: {total}"
         await e.answer(
-            "Error 404: File | Info not Found 🤔\nMaybe Bot was restarted\nKindly Resend Media",
+            info,
             cache_time=0,
             alert=True,
         )
 
+
+async def thumbnail(event):
+    if event.is_private:
+        return
+    if str(event.sender_id) not in OWNER:
+        return
+    try:
+        os.remove("thumb.jpg")
+    except:
+        pass
+    link = event.text.split()[1]
+    try:
+        os.system(f"wget {link} -O thumb.jpg")
+        await event.reply("Successfully Updated the Thumbnail")
+    except Exception as err:
+        await event.reply("Error Occurred")
+        LOGS.info(str(err))
+  
+  
+async def restart(event):
+    if str(event.sender_id) not in OWNER:
+        await asyncio.sleep(5)
+    try:
+        await event.reply("`Restarting Please Wait…`")
+        os.system("kill -9 -1")
+    except Exception as err:
+        await event.reply("Error Occurred")
+        LOGS.info(str(err))
+  
 
 async def dl_link(event):
     if not event.is_private:
@@ -65,7 +116,7 @@ async def dl_link(event):
     kk = dl.split("/")[-1]
     aa = kk.split(".")[-1]
     rr = "encode"
-    bb = kk.replace(f".{aa}", " [Encoded].mkv")
+    bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
     out = f"{rr}/{bb}"
     thum = "thumb.jpg"
     dtime = ts(int((es - s).seconds) * 1000)
@@ -107,8 +158,9 @@ async def dl_link(event):
                 progress(d, t, nnn, ttt, "`▲ Uploading ▲`")
             ),
         )
+    fname = out.split("/")[1]
     ds = await xxx.client.send_file(
-        xxx.chat_id, file=ok, force_document=True, thumb=thum
+        xxx.chat_id, file=ok, force_document=True, thumb=thum, caption=f"`{fname}`\n**© @RsTvEncodes**"
     )
     await nnn.delete()
     org = int(Path(dl).stat().st_size)
@@ -208,7 +260,7 @@ async def encod(event):
         kk = dl.split("/")[-1]
         aa = kk.split(".")[-1]
         rr = f"encode"
-        bb = kk.replace(f".{aa}", " [Encoded].mkv")
+        bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
         out = f"{rr}/{bb}"
         thum = "thumb.jpg"
         dtime = ts(int((es - s).seconds) * 1000)
@@ -246,11 +298,12 @@ async def encod(event):
                 file=f,
                 name=out,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, nnn, ttt, "`🔺 uploading 🔺`")
+                    progress(d, t, nnn, ttt, "🔺 uploading 🔺")
                 ),
             )
+        fname = out.split("/")[1]
         ds = await e.client.send_file(
-            e.chat_id, file=ok, force_document=True, thumb=thum
+            e.chat_id, file=ok, force_document=True, thumb=thum, caption=f"`{fname}`\n**© @RsTvEncodes**"
         )
         await nnn.delete()
         org = int(Path(dl).stat().st_size)
@@ -273,3 +326,4 @@ async def encod(event):
     except BaseException as er:
         LOGS.info(er)
         WORKING.clear()
+        

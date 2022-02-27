@@ -25,7 +25,6 @@ bash - /bash + command
 eval - Evaluate code
 ping - Ping!
 status - 🆕 Get bot's status
-thumbnail - set thumbnail
 showthumb - 🖼️ Show Current Thumbnail
 cmds - List Available Commands
 cancelall - ❌ Clear Cached Downloads & Queued Files

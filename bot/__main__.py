@@ -62,6 +62,21 @@ async def _(e):
     await restart(e)
 
 
+@bot.on(events.NewMessage(pattern="/cancelall"))
+async def _(e):
+    await clean(e)
+
+
+@bot.on(events.NewMessage(pattern="/showthumb"))
+async def _(e):
+    await getthumb(e)
+
+
+@bot.on(events.NewMessage(pattern="/clear"))
+async def _(e):
+    await clearqueue(e)
+
+
 ######## Callbacks #########
 
 
@@ -103,7 +118,22 @@ async def _(e):
     await status(e)
 
 
+@bot.on(events.NewMessage(pattern="/cmds"))
+async def _(e):
+    await detail(e)
+
+
+@bot.on(events.NewMessage(pattern="/logs"))
+async def _(e):
+    await getlogs(e)
+
+
 ########## AUTO ###########
+
+
+@bot.on(events.NewMessage(incoming=True))
+async def _(e):
+    await thumb(e)
 
 
 @bot.on(events.NewMessage(incoming=True))
@@ -227,5 +257,6 @@ async def something():
 
 LOGS.info("Bot has started.")
 with bot:
+    bot.loop.run_until_complete(startup())
     bot.loop.run_until_complete(something())
     bot.loop.run_forever()

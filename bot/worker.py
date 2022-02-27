@@ -24,6 +24,63 @@ from .util import get_readable_file_size
 from .worker import *
 
 
+async def getlogs(event):
+    if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
+        return
+    await event.client.send_file(event.chat_id, file=LOG_FILE_NAME, force_document=True)
+
+
+async def clean(event):
+    if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
+        return
+    await event.reply("**Cleared Queued, Working Files and Cached Downloads!**")
+    WORKING.clear()
+    QUEUE.clear()
+    os.system("rm -rf downloads/*")
+    os.system("rm -rf encode/*")
+    for proc in psutil.process_iter():
+        processName = proc.name()
+        processID = proc.pid
+        print(processName , ' - ', processID)
+        if (processName == "ffmpeg"):
+         os.kill (processID,signal.SIGKILL)
+    return
+
+
+async def restart(event):
+    if str(event.sender_id) not in OWNER:
+        await asyncio.sleep(5)
+    try:
+        await event.reply("`Restarting Please Wait…`")
+        os.system("kill -9 -1")
+    except Exception as err:
+        await event.reply("Error Occurred")
+        LOGS.info(str(err))
+
+async def getthumb(event):
+    if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
+        return
+    await event.client.send_file(event.chat_id, file="/bot/thumb.jpg", force_document=False, caption="**Your Current Thumbnail.**")
+
+
+async def clearqueue(event):
+    if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
+        return
+    await event.reply("**Cleared Queued Files!**")
+    QUEUE.clear()
+    return
+
+
+async def thumb(event):
+        if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
+            return await event.reply_text("**Well That Ain't Right!**")
+        if not event.photo:
+            return
+        os.system("rm thumb.jpg")
+        await event.client.download_media(event.media, file="/bot/thumb.jpg")
+        await event.reply("**Thumbnail Saved Successfully.**")
+
+
 async def stats(e):
     try:
         wah = e.pattern_match.group(1).decode("UTF-8")
@@ -58,35 +115,6 @@ async def stats(e):
             cache_time=0,
             alert=True,
         )
-
-
-async def thumbnail(event):
-    if event.is_private:
-        return
-    if str(event.sender_id) not in OWNER:
-        return
-    try:
-        os.remove("thumb.jpg")
-    except BaseException:
-        pass
-    link = event.text.split()[1]
-    try:
-        os.system(f"wget {link} -O thumb.jpg")
-        await event.reply("Successfully Updated the Thumbnail")
-    except Exception as err:
-        await event.reply("Error Occurred")
-        LOGS.info(str(err))
-
-
-async def restart(event):
-    if str(event.sender_id) not in OWNER:
-        await asyncio.sleep(5)
-    try:
-        await event.reply("`Restarting Please Wait…`")
-        os.system("kill -9 -1")
-    except Exception as err:
-        await event.reply("Error Occurred")
-        LOGS.info(str(err))
 
 
 async def dl_link(event):

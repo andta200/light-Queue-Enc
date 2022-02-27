@@ -26,6 +26,12 @@ eval - Evaluate code
 ping - Ping!
 status - 🆕 Get bot's status
 thumbnail - set thumbnail
+showthumb - 🖼️ Show Current Thumbnail
+cmds - List Available Commands
+cancelall - ❌ Clear Cached Downloads & Queued Files
+clear - Clear Queued Files
+logs - Get Bot Logs
+help - Get Detailed Help
 ```
 ### Changelogs:
 - __[Here](https://col-serra.github.io/light-Queue-Enc/)__ :shipit:

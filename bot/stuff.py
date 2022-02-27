@@ -21,6 +21,26 @@ from .util import get_readable_file_size
 from .worker import *
 
 
+async def detail(event):
+    await event.reply(
+        f"""
+**Available Commands 🤖**
+/start - __Check Bot is Working Or Not__
+/help - __Get Detailed Help__
+/logs - __Get Bot Logs__
+/ping - __Check Ping__
+/status - __Get System Info__
+/link - __Download From Link__
+/cancelall - __Clear Cached Downloads and Queued files__
+/clear - __Clear Queued Files__
+/showthumb - __Show Current Thumbnail__
+/eval - __Execute An Argument__
+/bash - __Run Bash Commands__
+/cmds - __Show This List Again__
+"""
+    )
+
+
 async def up(event):
     if not event.is_private:
         return

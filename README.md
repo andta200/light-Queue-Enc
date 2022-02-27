@@ -27,3 +27,5 @@ ping - Ping!
 status - 🆕 Get bot's status
 thumbnail - set thumbnail
 ```
+### Changelogs:
+- __[Here](https://col-serra.github.io/light-Queue-Enc/)__ :shipit:

@@ -1,4 +1,5 @@
-# Queue Encoder Bot (For Single Users) *doesn't work on groups yet pull requests to change that are welcomed*
+# Queue Encoder Bot (For Single Users) 
+*doesn't work in groups yet pull requests to change that are welcomed*
 
 ## With HandBrakeCLI support 
 (change `FFMPEG` Variable to [handbrakecli.sh](handbrakecli.sh)  instead and configure the script has needed)

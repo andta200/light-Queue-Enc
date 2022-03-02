@@ -52,11 +52,6 @@ async def _(e):
     await dl_link(e)
 
 
-@bot.on(events.NewMessage(pattern="/thumbnail"))
-async def _(e):
-    await thumbnail(e)
-
-
 @bot.on(events.NewMessage(pattern="/restart"))
 async def _(e):
     await restart(e)

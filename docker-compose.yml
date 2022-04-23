@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  worker:
+    build: .
+    environment:
+      BOT_TOKEN: $BOT_TOKEN
+      THUMB: $THUMB
+      API_ID: $API_ID  # defaults to None
+      API_HASH: $API_HASH  # defaults to None
+      OWNER: $OWNER  # defaults to None
+      FFMPEG: $FFMPEG  # defaults to None

@@ -113,6 +113,16 @@ async def _(e):
     await status(e)
 
 
+@bot.on(events.NewMessage(pattern="/get"))
+async def _(e):
+    await check(e)
+
+
+@bot.on(events.NewMessage(pattern="/set"))
+async def _(e):
+    await change(e)
+
+
 @bot.on(events.NewMessage(pattern="/cmds"))
 async def _(e):
     await detail(e)
@@ -178,6 +188,8 @@ async def something():
                 bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
                 out = f"{rr}/{bb}"
                 thum = "thumb.jpg"
+                with open('ffmpeg.txt', 'r') as file:
+                    ffmpeg = file.read().rstrip()
                 dtime = ts(int((es - s).seconds) * 1000)
                 hehe = f"{out};{dl};{list(QUEUE.keys())[0]}"
                 wah = code(hehe)
@@ -188,7 +200,7 @@ async def something():
                         [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
                     ],
                 )
-                cmd = FFMPEG.format(dl, out)
+                cmd = ffmpeg.format(dl, out)
                 process = await asyncio.create_subprocess_shell(
                     cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
                 )

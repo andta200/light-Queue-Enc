@@ -58,6 +58,29 @@ async def restart(event):
         LOGS.info(str(err))
 
 
+async def change(event):
+    if str(event.sender_id) not in OWNER:
+        return
+    try:
+        temp = event.text.split(" ", maxsplit=1)[1]
+        os.system(f"rm -rf ffmpeg.txt")
+        os.system(f"cat > ffmpeg.txt")
+        file = open("ffmpeg.txt","w") 
+        file.write(str(temp) + "\n") 
+        file.close()
+        await event.reply(f"**Changed FFMPEG Code to**\n\n`{temp}`")
+    except Exception as err:
+        await event.reply("Error Occurred")
+        LOGS.info(str(err))
+
+async def check(event):
+    if str(event.sender_id) not in OWNER and event.sender_id !=DEV:
+        return
+    with open('ffmpeg.txt', 'r') as file:
+        ffmpeg = file.read().rstrip()
+    await event.reply(f"**Current FFMPEG Code Is**\n\n`{ffmpeg}`")
+
+
 async def getthumb(event):
     if str(event.sender_id) not in OWNER and event.sender_id != DEV:
         return
@@ -155,6 +178,8 @@ async def dl_link(event):
     bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
     out = f"{rr}/{bb}"
     thum = "thumb.jpg"
+    with open('ffmpeg.txt', 'r') as file:
+        ffmpeg = file.read().rstrip()
     dtime = ts(int((es - s).seconds) * 1000)
     hehe = f"{out};{dl};0"
     wah = code(hehe)
@@ -165,7 +190,7 @@ async def dl_link(event):
             [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
         ],
     )
-    cmd = FFMPEG.format(dl, out)
+    cmd = ffmpeg.format(dl, out)
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
@@ -303,6 +328,8 @@ async def encod(event):
         bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
         out = f"{rr}/{bb}"
         thum = "thumb.jpg"
+        with open('ffmpeg.txt', 'r') as file:
+            ffmpeg = file.read().rstrip()
         dtime = ts(int((es - s).seconds) * 1000)
         e = xxx
         hehe = f"{out};{dl};0"
@@ -314,7 +341,7 @@ async def encod(event):
                 [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
             ],
         )
-        cmd = FFMPEG.format(dl, out)
+        cmd = ffmpeg.format(dl, out)
         process = await asyncio.create_subprocess_shell(
             cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
         )

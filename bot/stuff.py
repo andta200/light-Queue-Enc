@@ -26,10 +26,13 @@ async def detail(event):
         f"""
 **Available Commands 🤖**
 /start - __Check Bot is Working Or Not__
+/restart - __Nuke bot__
 /help - __Get Detailed Help__
 /logs - __Get Bot Logs__
 /ping - __Check Ping__
 /status - __Get System Info__
+/get - __Get Current FFMPEG Code__
+/set - __Set Current FFMPEG Code__
 /link - __Download From Link__
 /cancelall - __Clear Cached Downloads and Queued files__
 /clear - __Clear Queued Files__

@@ -25,8 +25,8 @@ os.system(f"wget {THUMB} -O thumb.jpg")
 os.system(f"wget {ICON} -O icon.png")
 os.system(f"cat > ffmpeg.txt")
 
-file = open("ffmpeg.txt","w") 
-file.write(str(FFMPEG) + "\n") 
+file = open("ffmpeg.txt", "w")
+file.write(str(FFMPEG) + "\n")
 file.close()
 
 if not os.path.isdir("downloads/"):

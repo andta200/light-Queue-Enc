@@ -188,7 +188,7 @@ async def something():
                 bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
                 out = f"{rr}/{bb}"
                 thum = "thumb.jpg"
-                with open('ffmpeg.txt', 'r') as file:
+                with open("ffmpeg.txt", "r") as file:
                     ffmpeg = file.read().rstrip()
                 dtime = ts(int((es - s).seconds) * 1000)
                 hehe = f"{out};{dl};{list(QUEUE.keys())[0]}"

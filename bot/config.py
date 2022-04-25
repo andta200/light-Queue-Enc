@@ -28,9 +28,7 @@ try:
     THUMB = config(
         "THUMBNAIL", default="https://telegra.ph/file/75ee20ec8d8c8bba84f02.jpg"
     )
-    ICON = config(
-        "ICON", default="https://telegra.ph/file/75ee20ec8d8c8bba84f02.jpg"
-    )
+    ICON = config("ICON", default="https://telegra.ph/file/75ee20ec8d8c8bba84f02.jpg")
 except Exception as e:
     print("Environment vars Missing")
     print("something went wrong")

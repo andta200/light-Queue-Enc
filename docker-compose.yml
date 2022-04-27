@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  worker:
+    build: .
+    environment:
+      BOT_TOKEN: $BOT_TOKEN
+      THUMB: $THUMB
+      APP_ID: $APP_ID  # defaults to None
+      API_HASH: $API_HASH  # defaults to None
+      OWNER: $OWNER  # defaults to None
+      ICON: $ICON
+      LOG_CHANNEL: $LOG_CHANNEL  # defaults to none

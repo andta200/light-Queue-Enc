@@ -75,4 +75,10 @@ except Exception as e:
 
 
 async def startup():
-    await bot.send_message(int(OWNER.split()[0]), "**I'm Up! 😎**")
+    try:
+        await bot.send_message(int(OWNER.split()[0]), "**I'm Up! 😎**")
+        await bot.send_message(int(LOG_CHANNEL), "**Bot Is Back Online! 🛰️**")
+        await bot.send_message(int(OWNER.split()[1]), "**I'm Up! 😎**")
+        await bot.send_message(int(OWNER.split()[2]), "**I'm Up! 😎**")
+    except BaseException:
+        pass

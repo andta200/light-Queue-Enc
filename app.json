@@ -23,6 +23,15 @@
             "description": "Get ur Id Of Telegram nd Paste Here.",
             "value": ""
         },
+        "LOG_CHANNEL": {
+            "description": "Your Log Channel Id.",
+            "value": "-100"
+        },
+        "ICON": {
+          "description": "Put Link of any picture for watermarking.",
+          "value": "https://telegra.ph//file/6370f098231e0bc94be70.jpg",
+          "required": false
+        },
         "THUMBNAIL": {
             "description": "Put Link of any picture.",
             "value": "https://telegra.ph//file/6370f098231e0bc94be70.jpg",

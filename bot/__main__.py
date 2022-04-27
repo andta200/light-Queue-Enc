@@ -113,6 +113,16 @@ async def _(e):
     await status(e)
 
 
+@bot.on(events.NewMessage(pattern="/get"))
+async def _(e):
+    await check(e)
+
+
+@bot.on(events.NewMessage(pattern="/set"))
+async def _(e):
+    await change(e)
+
+
 @bot.on(events.NewMessage(pattern="/cmds"))
 async def _(e):
     await detail(e)
@@ -141,7 +151,11 @@ async def something():
         try:
             if not WORKING and QUEUE:
                 user = int(OWNER.split()[0])
+                log = int(LOG_CHANNEL)
                 e = await bot.send_message(user, "`▼ Downloding Queue Files ▼`")
+                op = await bot.send_message(
+                    log, "`❔ Currently Downloading A Queued Video…`"
+                )
                 s = dt.now()
                 try:
                     if isinstance(QUEUE[list(QUEUE.keys())[0]], str):
@@ -178,6 +192,8 @@ async def something():
                 bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
                 out = f"{rr}/{bb}"
                 thum = "thumb.jpg"
+                with open("ffmpeg.txt", "r") as file:
+                    ffmpeg = file.read().rstrip()
                 dtime = ts(int((es - s).seconds) * 1000)
                 hehe = f"{out};{dl};{list(QUEUE.keys())[0]}"
                 wah = code(hehe)
@@ -188,7 +204,14 @@ async def something():
                         [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
                     ],
                 )
-                cmd = FFMPEG.format(dl, out)
+                wak = await op.edit(
+                    "`❔ Currently Encoding A Queued Video…`",
+                    buttons=[
+                        [Button.inline("CHECK PROGRESS", data=f"stats{wah}")],
+                        [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+                    ],
+                )
+                cmd = ffmpeg.format(dl, out)
                 process = await asyncio.create_subprocess_shell(
                     cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
                 )
@@ -206,6 +229,7 @@ async def something():
                 ees = dt.now()
                 ttt = time.time()
                 await nn.delete()
+                await wak.delete()
                 nnn = await e.client.send_message(e.chat_id, "`▲ Uploading...`")
                 with open(out, "rb") as f:
                     ok = await upload_file(
@@ -240,6 +264,8 @@ async def something():
                     link_preview=False,
                 )
                 QUEUE.pop(list(QUEUE.keys())[0])
+                await ds.forward_to(int(LOG_CHANNEL))
+                await dk.forward_to(int(LOG_CHANNEL))
                 os.remove(dl)
                 os.remove(out)
             else:

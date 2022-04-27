@@ -153,8 +153,9 @@ async def something():
                 user = int(OWNER.split()[0])
                 log = int(LOG_CHANNEL)
                 e = await bot.send_message(user, "`▼ Downloding Queue Files ▼`")
-                op = await bot.send_message(log,
-                    "`❔ Currently Downloading A Queued Video…`")
+                op = await bot.send_message(
+                    log, "`❔ Currently Downloading A Queued Video…`"
+                )
                 s = dt.now()
                 try:
                     if isinstance(QUEUE[list(QUEUE.keys())[0]], str):

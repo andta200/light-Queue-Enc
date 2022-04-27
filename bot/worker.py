@@ -167,8 +167,10 @@ async def dl_link(event):
     s = dt.now()
     xxx = await event.reply("`➟ Downloading…`")
     log = int(LOG_CHANNEL)
-    op = await bot.send_message(log,
-        f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Downloading A Video From Link…`")
+    op = await bot.send_message(
+        log,
+        f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Downloading A Video From Link…`",
+    )
     try:
         dl = await fast_download(xxx, link, name)
     except Exception as er:
@@ -300,8 +302,10 @@ async def encod(event):
         WORKING.append(1)
         log = int(LOG_CHANNEL)
         xxx = await event.reply("`Download Pending…` \n**(Waiting For Connection)**")
-        op = await bot.send_message(log,
-            f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Downloading A Video…`")
+        op = await bot.send_message(
+            log,
+            f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Downloading A Video…`",
+        )
         s = dt.now()
         ttt = time.time()
         dir = f"downloads/"

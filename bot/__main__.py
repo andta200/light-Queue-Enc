@@ -151,7 +151,10 @@ async def something():
         try:
             if not WORKING and QUEUE:
                 user = int(OWNER.split()[0])
+                log = int(LOG_CHANNEL)
                 e = await bot.send_message(user, "`▼ Downloding Queue Files ▼`")
+                op = await bot.send_message(log,
+                    "`❔ Currently Downloading A Queued Video…`")
                 s = dt.now()
                 try:
                     if isinstance(QUEUE[list(QUEUE.keys())[0]], str):
@@ -200,6 +203,13 @@ async def something():
                         [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
                     ],
                 )
+                wak = await op.edit(
+                    "`❔ Currently Encoding A Queued Video…`",
+                    buttons=[
+                        [Button.inline("CHECK PROGRESS", data=f"stats{wah}")],
+                        [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+                    ],
+                )
                 cmd = ffmpeg.format(dl, out)
                 process = await asyncio.create_subprocess_shell(
                     cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
@@ -218,6 +228,7 @@ async def something():
                 ees = dt.now()
                 ttt = time.time()
                 await nn.delete()
+                await wak.delete()
                 nnn = await e.client.send_message(e.chat_id, "`▲ Uploading...`")
                 with open(out, "rb") as f:
                     ok = await upload_file(
@@ -252,6 +263,8 @@ async def something():
                     link_preview=False,
                 )
                 QUEUE.pop(list(QUEUE.keys())[0])
+                await ds.forward_to(int(LOG_CHANNEL))
+                await dk.forward_to(int(LOG_CHANNEL))
                 os.remove(dl)
                 os.remove(out)
             else:

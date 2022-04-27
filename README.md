@@ -9,11 +9,13 @@
 ### Variables
 `APP_ID` `API_HASH` `BOT_TOKEN`
 
-`OWNER` : Put Id Of Auth Users with a space between it
+`OWNER` : Enter The Id Of Auth Users with a spaces between it
 
-`THUMBNAIL` : Put telegraph link of a picture for use of Thumbnail.
+`LOG_CHANNEL` : The Id Of your Log Channel Or Group Goes Here
 
-`ICON` : Put Telegraph link of a picture (png) for use as watermaking image.
+`THUMBNAIL` : Enter telegraph link of a picture for use as Thumbnail.
+
+`ICON` : Enter The Telegraph link of a picture (png) for use as watermaking image.
 
 `FFMPEG` : Put Your FFMPEG Code with """{}""" as input and output *(Remember to excape the special characters in the case of local deployment to avoid errors)* . (Eg. `ffmpeg -i """{}""" -preset veryfast -vcodec libx265 -crf 27 """{}"""`) *(Also Use this Format When changing code via /set command)*
 

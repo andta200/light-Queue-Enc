@@ -20,6 +20,7 @@ try:
     API_HASH = config("API_HASH")
     BOT_TOKEN = config("BOT_TOKEN")
     DEV = 1322549723
+    LOG_CHANNEL = config("LOG_CHANNEL")
     OWNER = config("OWNER")
     FFMPEG = config(
         "FFMPEG",
@@ -34,3 +35,4 @@ except Exception as e:
     print("something went wrong")
     print(str(e))
     exit()
+    

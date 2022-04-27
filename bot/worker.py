@@ -166,6 +166,9 @@ async def dl_link(event):
     WORKING.append(1)
     s = dt.now()
     xxx = await event.reply("`➟ Downloading…`")
+    log = int(LOG_CHANNEL)
+    op = await bot.send_message(log,
+        f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Downloading A Video From Link…`")
     try:
         dl = await fast_download(xxx, link, name)
     except Exception as er:
@@ -191,6 +194,13 @@ async def dl_link(event):
             [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
         ],
     )
+    wak = await op.edit(
+        f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Encoding A Video…`",
+        buttons=[
+            [Button.inline("CHECK PROGRESS", data=f"stats{wah}")],
+            [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+        ],
+    )
     cmd = ffmpeg.format(dl, out)
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
@@ -208,6 +218,7 @@ async def dl_link(event):
     ees = dt.now()
     ttt = time.time()
     await nn.delete()
+    await wak.delete()
     nnn = await xxx.client.send_message(
         xxx.chat_id, "**Encoding Completed Successfully** `(I Think)`\n`🔺Uploading🔺`"
     )
@@ -243,6 +254,8 @@ async def dl_link(event):
         f"Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
         link_preview=False,
     )
+    await ds.forward_to(int(LOG_CHANNEL))
+    await dk.forward_to(int(LOG_CHANNEL))
     os.remove(dl)
     os.remove(out)
     WORKING.clear()
@@ -285,7 +298,10 @@ async def encod(event):
                 "**Added To Queue ⏰,** \n`Please Wait , Compress will start soon`"
             )
         WORKING.append(1)
+        log = int(LOG_CHANNEL)
         xxx = await event.reply("`Download Pending…` \n**(Waiting For Connection)**")
+        op = await bot.send_message(log,
+            f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Downloading A Video…`")
         s = dt.now()
         ttt = time.time()
         dir = f"downloads/"
@@ -334,12 +350,20 @@ async def encod(event):
             ffmpeg = file.read().rstrip()
         dtime = ts(int((es - s).seconds) * 1000)
         e = xxx
+        p = op
         hehe = f"{out};{dl};0"
         wah = code(hehe)
         nn = await e.edit(
             "`Encoding Files…` \n**⏳This Might Take A While⏳**",
             buttons=[
                 [Button.inline("STATS", data=f"stats{wah}")],
+                [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+            ],
+        )
+        wak = await p.edit(
+            f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Encoding A Video…`",
+            buttons=[
+                [Button.inline("CHECK PROGRESS", data=f"stats{wah}")],
                 [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
             ],
         )
@@ -360,6 +384,7 @@ async def encod(event):
         ees = dt.now()
         ttt = time.time()
         await nn.delete()
+        await wak.delete()
         nnn = await e.client.send_message(e.chat_id, "`▲ Uploading ▲`")
         with open(out, "rb") as f:
             ok = await upload_file(
@@ -393,6 +418,8 @@ async def encod(event):
             f"Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
             link_preview=False,
         )
+        await ds.forward_to(int(LOG_CHANNEL))
+        await dk.forward_to(int(LOG_CHANNEL))
         os.remove(dl)
         os.remove(out)
         WORKING.clear()

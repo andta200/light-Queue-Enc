@@ -112,13 +112,13 @@ async def ihelp(event):
 
 async def beck(event):
     await event.edit(
-        f"Hi `{event.sender.first_name}`,\nThis is A CompressorQueue Which Can Encode Videos.
+        f"Hi `{event.sender.first_name}`,\nThis is A CompressorQueue Which Can Encode Videos.",
         buttons=[
             [Button.inline("HELP", data="ihelp")],
             [
                 Button.url("SOURCE (original)", url="github.com/1Danish-00/"),
                 Button.url("SOURCE (edit)", url="github.com/Col-Serra/light-Queue-Enc"),
             ],
-            [Button.url("CHANNEL", url="t.me/tgyararlibotlar")],
+            [Button.url("CHANNEL️", url="t.me/tgyararlibotlar")],
         ],
     )

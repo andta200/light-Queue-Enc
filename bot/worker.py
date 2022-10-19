@@ -195,13 +195,13 @@ async def dl_link(event):
             [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
         ],
     )
-#   wak = await op.edit(
-#       f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Encoding A Video…`",
-#       buttons=[
-#           [Button.inline("CHECK PROGRESS", data=f"stats{wah}")],
-#           [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
-#       ],
-#   )
+    wak = await op.edit(
+        f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Encoding A Video…`",
+            buttons=[
+            [Button.inline("CHECK PROGRESS", data=f"stats{wah}")],
+            [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+        ],
+    )
     cmd = ffmpeg.format(dl, out)
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE

@@ -219,7 +219,7 @@ async def something():
                 er = stderr.decode()
                 try:
                     if er:
-                        await e.edit(str(er) + "\n\n**ERROR**")
+                        await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
                         QUEUE.pop(list(QUEUE.keys())[0])
                         os.remove(dl)
                         os.remove(out)
@@ -244,7 +244,7 @@ async def something():
                 ds = await e.client.send_file(
                     e.chat_id,
                     file=ok,
-                    force_document=True,
+                    force_document=False,
                     caption=f"`{fname}`",
                     thumb=thum,
                 )

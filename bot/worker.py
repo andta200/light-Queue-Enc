@@ -197,7 +197,7 @@ async def dl_link(event):
     )
     wak = await op.edit(
         f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Encoding A Video…`",
-            buttons=[
+        buttons=[
             [Button.inline("CHECK PROGRESS", data=f"stats{wah}")],
             [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
         ],
@@ -210,7 +210,7 @@ async def dl_link(event):
     er = stderr.decode()
     try:
         if er:
-            await xxx.edit(str(er) + "\n\n**ERROR**")
+            await xxx.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
             WORKING.clear()
             os.remove(dl)
             return os.remove(out)
@@ -236,7 +236,7 @@ async def dl_link(event):
     ds = await xxx.client.send_file(
         xxx.chat_id,
         file=ok,
-        force_document=True,
+        force_document=False,
         caption=f"`{fname}`",
         thumb=thum,   
     )
@@ -378,7 +378,7 @@ async def encod(event):
         er = stderr.decode()
         try:
             if er:
-                await e.edit(str(er) + "\n\n**ERROR**")
+                await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
                 WORKING.clear()
                 os.remove(dl)
                 return os.remove(out)
@@ -402,7 +402,7 @@ async def encod(event):
         ds = await e.client.send_file(
             e.chat_id,
             file=ok,
-            force_document=True,
+            force_document=False,
             caption=f"`{fname}`",
             thumb=thum,
         )

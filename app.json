@@ -24,7 +24,7 @@
             "value": ""
         },
         "LOG_CHANNEL": {
-            "description": "Your Log Channel Id.",
+            "description": "Your Log Channel Id. BOT<->ADMIN",
             "value": "-100"
         },
         "ICON": {

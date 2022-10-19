@@ -8,19 +8,19 @@
     "stack": "container",
     "env": {
         "APP_ID": {
-            "description": "You api id, from my.telegram.org or @apiScrapperRoBot.",
+            "description": "Your Api Id, From my.telegram.org",
             "value": ""
         },
         "API_HASH": {
-            "description": "You api hash, from my.telegram.org or @apiScrapperRoBot.",
+            "description": "Your Api Hash, From my.telegram.org",
             "value": ""
         },
         "BOT_TOKEN": {
-            "description": "Make a bot from @BotFather, and enter it's api token here.",
+            "description": "Make A Bot From @BotFather, And Enter It's Api Token Here.",
             "value": ""
         },
         "OWNER": {
-            "description": "Get ur Id Of Telegram nd Paste Here.",
+            "description": "Get Your Id",
             "value": ""
         },
         "LOG_CHANNEL": {
@@ -28,18 +28,18 @@
             "value": "-100"
         },
         "ICON": {
-          "description": "Put Link of any picture for watermarking.",
-          "value": "https://telegra.ph//file/6370f098231e0bc94be70.jpg",
-          "required": false
+            "description": "Put Link Of Any Picture For Watermarking.",
+            "value": "https://telegra.ph/file/709330fea0103f72c5d5a.jpg",
+            "required": false
         },
         "THUMBNAIL": {
-            "description": "Put Link of any picture.",
-            "value": "https://telegra.ph//file/6370f098231e0bc94be70.jpg",
+            "description": "Put Link Of Any Picture.",
+            "value": "https://telegra.ph/file/251d499373a346494a26d.png",
             "required": false
         },
         "FFMPEG": {
-            "description": "Put your FFMPEG code.",
-            "value": "ffmpeg -i '''{}''' -preset ultrafast -c:v libx265 -crf 27 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? '''{}''' -y",
+            "description": "Put Your FFMPEG Code.",
+            "value": "ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -vf scale=640:-2 -c:a aac -vbr on -b:a 64k -threads 1 '''{}'''",
             "required": false
         }
     }

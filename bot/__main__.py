@@ -244,7 +244,7 @@ async def something():
                 ds = await e.client.send_file(
                     e.chat_id,
                     file=ok,
-                    force_document=False,
+                    force_document=True,
                     caption=f"`{fname}`",
                     thumb=thum,
                 )

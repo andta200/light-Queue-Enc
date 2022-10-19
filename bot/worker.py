@@ -236,7 +236,7 @@ async def dl_link(event):
     ds = await xxx.client.send_file(
         xxx.chat_id,
         file=ok,
-        force_document=False,
+        force_document=True,
         caption=f"`{fname}`",
         thumb=thum,   
     )
@@ -402,7 +402,7 @@ async def encod(event):
         ds = await e.client.send_file(
             e.chat_id,
             file=ok,
-            force_document=False,
+            force_document=True,
             caption=f"`{fname}`",
             thumb=thum,
         )

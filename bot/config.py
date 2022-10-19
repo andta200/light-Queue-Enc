@@ -24,12 +24,13 @@ try:
     OWNER = config("OWNER")
     FFMPEG = config(
         "FFMPEG",
-        default='ffmpeg -i "{}" -preset ultrafast -c:v libx265 -crf 27 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? "{}"',
+#       default='ffmpeg -i "{}" -preset ultrafast -c:v libx265 -crf 27 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? "{}"',
+        default='ffmpeg -i "{}" -preset superfast -c:v libx265 -crf 28 -vf scale=640:-2 -c:a aac -vbr on -b:a 64k -threads 1 "{}"',
     )
     THUMB = config(
-        "THUMBNAIL", default="https://telegra.ph/file/75ee20ec8d8c8bba84f02.jpg"
+        "THUMBNAIL", default="https://telegra.ph/file/709330fea0103f72c5d5a.jpg"
     )
-    ICON = config("ICON", default="https://telegra.ph/file/75ee20ec8d8c8bba84f02.jpg")
+    ICON = config("ICON", default="https://telegra.ph/file/251d499373a346494a26d.png")
 except Exception as e:
     print("Environment vars Missing")
     print("something went wrong")

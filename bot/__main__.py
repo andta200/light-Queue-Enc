@@ -152,7 +152,7 @@ async def something():
             if not WORKING and QUEUE:
                 user = int(OWNER.split()[0])
                 log = int(LOG_CHANNEL)
-                e = await bot.send_message(user, "`▼ Downloding Queue Files ▼`")
+                e = await bot.send_message(user, "`▼ Downloading Queue Files ▼`")
                 op = await bot.send_message(
                     log, "`❔ Currently Downloading A Queued Video…`"
                 )
@@ -189,7 +189,7 @@ async def something():
                 kk = dl.split("/")[-1]
                 aa = kk.split(".")[-1]
                 rr = "encode"
-                bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
+                bb = kk.replace(f".{aa}", ".mp4")
                 out = f"{rr}/{bb}"
                 thum = "thumb.jpg"
                 with open("ffmpeg.txt", "r") as file:
@@ -198,7 +198,7 @@ async def something():
                 hehe = f"{out};{dl};{list(QUEUE.keys())[0]}"
                 wah = code(hehe)
                 nn = await e.edit(
-                    "`Encoding Files…` \n**⏳This Might Take A While⏳**",
+                    "`Encoding Files…`",
                     buttons=[
                         [Button.inline("STATS", data=f"stats{wah}")],
                         [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
@@ -219,7 +219,7 @@ async def something():
                 er = stderr.decode()
                 try:
                     if er:
-                        await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
+                        await e.edit(str(er) + "\n\n**ERROR**")
                         QUEUE.pop(list(QUEUE.keys())[0])
                         os.remove(dl)
                         os.remove(out)
@@ -230,14 +230,14 @@ async def something():
                 ttt = time.time()
                 await nn.delete()
                 await wak.delete()
-                nnn = await e.client.send_message(e.chat_id, "`▲ Uploading...`")
+                nnn = await e.client.send_message(e.chat_id, "`▲ Uploading ▲`")
                 with open(out, "rb") as f:
                     ok = await upload_file(
                         client=e.client,
                         file=f,
                         name=out,
                         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                            progress(d, t, nnn, ttt, "🔺Uploading🔺")
+                            progress(d, t, nnn, ttt, "Uploading...")
                         ),
                     )
                 fname = out.split("/")[1]
@@ -245,8 +245,8 @@ async def something():
                     e.chat_id,
                     file=ok,
                     force_document=True,
+                    caption=f"`{fname}`",
                     thumb=thum,
-                    caption=f"`{fname}`\n**© @RsTvEncodes**",
                 )
                 await nnn.delete()
                 org = int(Path(dl).stat().st_size)
@@ -260,12 +260,12 @@ async def something():
                 a1 = await info(dl, e)
                 a2 = await info(out, e)
                 dk = await ds.reply(
-                    f"Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
+                    f"✅️ [Before]({a1}) • [After]({a2})\n🗜️ {hbs(com)} / {hbs(org)} • {per}\n⌛ 🔻 {x} 〽️️ {xx} 🔺 {xxx}",
                     link_preview=False,
                 )
                 QUEUE.pop(list(QUEUE.keys())[0])
-                await ds.forward_to(int(LOG_CHANNEL))
-                await dk.forward_to(int(LOG_CHANNEL))
+#               await ds.forward_to(int(LOG_CHANNEL))
+#               await dk.forward_to(int(LOG_CHANNEL))
                 os.remove(dl)
                 os.remove(out)
             else:

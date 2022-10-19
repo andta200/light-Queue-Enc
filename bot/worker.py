@@ -131,7 +131,7 @@ async def stats(e):
         cpuUsage = psutil.cpu_percent(interval=0.5)
         psutil.virtual_memory().percent
         psutil.disk_usage("/").percent
-        ans = f"CPU: {cpuUsage}%\n\nTotal Disk Space:\n{total}\n\nDownloaded:\n{ov}\n\nFileName:\n{input}\n\nCompressing:\n{ot}\n\nBot Uptime:\n{currentTime}\n\nUsed: {used}  Free: {free}"
+        ans = f"FileName: {input}\n\nDownloaded: {ov}\n\nCompressing: {ot}"
         await e.answer(ans, cache_time=0, alert=True)
     except Exception as er:
         LOGS.info(er)
@@ -139,13 +139,12 @@ async def stats(e):
         currentTime = ts(int((ed - uptime).seconds) * 1000)
         total, used, free = shutil.disk_usage(".")
         total = get_readable_file_size(total)
-        info = f"Error 404: File | Info not Found 🤔\nMaybe Bot was restarted\nKindly Resend Media\n\nOther Info\n═══════════\nBot Uptime: {currentTime}\n\nTotal Disk Space: {total}"
+        info = f"Error 404: File | Info not found 🤔\nMaybe bot was restarted\nKindly Resend Media"
         await e.answer(
             info,
             cache_time=0,
             alert=True,
         )
-
 
 async def dl_link(event):
     if not event.is_private:
@@ -181,7 +180,7 @@ async def dl_link(event):
     kk = dl.split("/")[-1]
     aa = kk.split(".")[-1]
     rr = "encode"
-    bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
+    bb = kk.replace(f".{aa}", ".mp4")
     out = f"{rr}/{bb}"
     thum = "thumb.jpg"
     with open("ffmpeg.txt", "r") as file:
@@ -190,7 +189,7 @@ async def dl_link(event):
     hehe = f"{out};{dl};0"
     wah = code(hehe)
     nn = await xxx.edit(
-        "`Encoding Files…` \n**⏳This Might Take A While⏳**",
+        "`Encoding Files…`",
         buttons=[
             [Button.inline("STATS", data=f"stats{wah}")],
             [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
@@ -211,7 +210,7 @@ async def dl_link(event):
     er = stderr.decode()
     try:
         if er:
-            await xxx.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
+            await xxx.edit(str(er) + "\n\n**ERROR**")
             WORKING.clear()
             os.remove(dl)
             return os.remove(out)
@@ -222,7 +221,7 @@ async def dl_link(event):
     await nn.delete()
     await wak.delete()
     nnn = await xxx.client.send_message(
-        xxx.chat_id, "**Encoding Completed Successfully** `(I Think)`\n`🔺Uploading🔺`"
+        xxx.chat_id, "**Encoding Completed Successfully** `(I Think)`\n`▲ Uploading ▲`"
     )
     with open(out, "rb") as f:
         ok = await upload_file(
@@ -238,8 +237,8 @@ async def dl_link(event):
         xxx.chat_id,
         file=ok,
         force_document=True,
-        thumb=thum,
-        caption=f"`{fname}`\n**© @RsTvEncodes**",
+        caption=f"`{fname}`",
+        thumb=thum,   
     )
     await nnn.delete()
     org = int(Path(dl).stat().st_size)
@@ -253,11 +252,11 @@ async def dl_link(event):
     a1 = await info(dl, xxx)
     a2 = await info(out, xxx)
     dk = await ds.reply(
-        f"Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
+        f"✅️ [Before]({a1}) • [After]({a2})\n🗜️ {hbs(com)} / {hbs(org)} • {per}\n⌛ 🔻 {x} 〽️️ {xx} 🔺 {xxx}",
         link_preview=False,
     )
-    await ds.forward_to(int(LOG_CHANNEL))
-    await dk.forward_to(int(LOG_CHANNEL))
+#   await ds.forward_to(int(LOG_CHANNEL))
+#   await dk.forward_to(int(LOG_CHANNEL))
     os.remove(dl)
     os.remove(out)
     WORKING.clear()
@@ -287,7 +286,7 @@ async def encod(event):
             pass
         if WORKING or QUEUE:
             await asyncio.sleep(3)
-            xxx = await event.reply("`Adding To Queue`")
+            xxx = await event.reply("`Adding To Queue...`")
             # id = pack_bot_file_id(event.media)
             doc = event.media.document
             if doc.id in list(QUEUE.keys()):
@@ -297,11 +296,11 @@ async def encod(event):
                 name = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
             QUEUE.update({doc.id: [name, doc]})
             return await xxx.edit(
-                "**Added To Queue ⏰,** \n`Please Wait , Compress will start soon`"
+                "`Added To Queue ⏰`"
             )
         WORKING.append(1)
         log = int(LOG_CHANNEL)
-        xxx = await event.reply("`Download Pending…` \n**(Waiting For Connection)**")
+        xxx = await event.reply("`Download Pending…`")
         op = await bot.send_message(
             log,
             f"`User` [{event.sender.first_name}](tg://user?id={event.sender.id}) `Is Currently Downloading A Video…`",
@@ -327,7 +326,7 @@ async def encod(event):
                                 t,
                                 xxx,
                                 ttt,
-                                "Downloading",
+                                "▼ Downloading ▼",
                             )
                         ),
                     )
@@ -336,7 +335,7 @@ async def encod(event):
                     event.media,
                     dir,
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, xxx, ttt, "`Downloading`")
+                        progress(d, t, xxx, ttt, "`Downloading...`")
                     ),
                 )
         except Exception as er:
@@ -347,7 +346,7 @@ async def encod(event):
         kk = dl.split("/")[-1]
         aa = kk.split(".")[-1]
         rr = f"encode"
-        bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
+        bb = kk.replace(f".{aa}", ".mp4")
         out = f"{rr}/{bb}"
         thum = "thumb.jpg"
         with open("ffmpeg.txt", "r") as file:
@@ -358,7 +357,7 @@ async def encod(event):
         hehe = f"{out};{dl};0"
         wah = code(hehe)
         nn = await e.edit(
-            "`Encoding Files…` \n**⏳This Might Take A While⏳**",
+            "`Encoding Files…`",
             buttons=[
                 [Button.inline("STATS", data=f"stats{wah}")],
                 [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
@@ -379,7 +378,7 @@ async def encod(event):
         er = stderr.decode()
         try:
             if er:
-                await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
+                await e.edit(str(er) + "\n\n**ERROR**")
                 WORKING.clear()
                 os.remove(dl)
                 return os.remove(out)
@@ -396,7 +395,7 @@ async def encod(event):
                 file=f,
                 name=out,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, nnn, ttt, "🔺 uploading 🔺")
+                    progress(d, t, nnn, ttt, "Uploading...")
                 ),
             )
         fname = out.split("/")[1]
@@ -404,8 +403,8 @@ async def encod(event):
             e.chat_id,
             file=ok,
             force_document=True,
+            caption=f"`{fname}`",
             thumb=thum,
-            caption=f"`{fname}`\n**© @RsTvEncodes**",
         )
         await nnn.delete()
         org = int(Path(dl).stat().st_size)
@@ -419,11 +418,11 @@ async def encod(event):
         a1 = await info(dl, e)
         a2 = await info(out, e)
         dk = await ds.reply(
-            f"Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
+            f"✅ [Before]({a1}) • [After]({a2})\n🗜️ {hbs(com)} / {hbs(org)} • {per}\n⌛ 🔻 {x} 〽️️ {xx} 🔺 {xxx}",
             link_preview=False,
         )
-        await ds.forward_to(int(LOG_CHANNEL))
-        await dk.forward_to(int(LOG_CHANNEL))
+#       await ds.forward_to(int(LOG_CHANNEL))
+#       await dk.forward_to(int(LOG_CHANNEL))
         os.remove(dl)
         os.remove(out)
         WORKING.clear()

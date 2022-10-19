@@ -100,9 +100,9 @@ async def progress(current, total, event, start, type_of_ps, file=None):
         speed = current / diff
         time_to_completion = round((total - current) / speed) * 1000
         progress_str = "**Progress**: `{0}{1} {2}%` \n".format(
-            "".join(["🧡" for i in range(math.floor(percentage / 10))]),
-            "".join(["🤍" for i in range(10 - math.floor(percentage / 10))]),
-            round(percentage, 4),
+            "".join(["◼️️" for i in range(math.floor(percentage / 10))]),
+            "".join(["◽️" for i in range(10 - math.floor(percentage / 10))]),
+            round(percentage, 1),
         )
         tmp = (
             progress_str
@@ -115,10 +115,10 @@ async def progress(current, total, event, start, type_of_ps, file=None):
         )
         if file:
             await event.edit(
-                "`✦ {}`\n\n`File Name: {}`\n\n{}".format(type_of_ps, file, tmp)
+                "`{}`\n\n`File Name: {}`\n\n{}".format(type_of_ps, file, tmp)
             )
         else:
-            await event.edit("`✦ {}`\n\n{}".format(type_of_ps, tmp))
+            await event.edit("`{}`\n\n{}".format(type_of_ps, tmp))
 
 
 async def info(file, event):

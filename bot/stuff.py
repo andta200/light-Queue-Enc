@@ -90,6 +90,10 @@ async def start(event):
                 Button.url("SOURCE (original)", url="github.com/1Danish-00/"),
                 Button.url("SOURCE (edit)", url="github.com/Col-Serra/light-Queue-Enc"),
             ],
+            [
+                Button.inline("SOURCE (original)", data="thden"),
+                Button.url("SOURCE (edit)", url="github.com/Col-Serra/light-Queue-Enc"),
+            ],
             [Button.url("CHANNEL️", url="t.me/tgyararlibotlar")],
         ],
     )

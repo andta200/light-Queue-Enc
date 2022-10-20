@@ -99,7 +99,14 @@ async def clearqueue(event):
     await event.reply("**Cleared Queued Files!**")
     QUEUE.clear()
     return
-
+#
+async def thden(event):
+    if str(event.sender_id) not in OWNER and event.sender_id != DEV:
+        return
+    await event.reply("/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -vf scale=960:-2 -c:a aac -vbr on -b:a 64k -threads 1 '''{}'''")
+    QUEUE.clear()
+    return
+#
 
 async def thumb(event):
     if str(event.sender_id) not in OWNER and event.sender_id != DEV:

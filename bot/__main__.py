@@ -135,6 +135,10 @@ async def _(e):
 
 ########## AUTO ###########
 
+@bot.on(events.NewMessage(incoming=True))
+async def _(e):
+    await thden(e)
+
 
 @bot.on(events.NewMessage(incoming=True))
 async def _(e):

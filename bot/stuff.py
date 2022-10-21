@@ -90,12 +90,6 @@ async def start(event):
                 Button.url("SOURCE (original)", url="github.com/1Danish-00/"),
                 Button.url("SOURCE (edit)", url="github.com/Col-Serra/light-Queue-Enc"),
             ],
-#KOD NASIL EKLENİR???
-#            [
-#                Button.inline("540P", data="/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 960x540 -threads 1 '''{}'''"),
-#                Button.inline("720P", data="/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 1280x720 -threads 1 '''{}'''"),
-#                
-            ],
             [Button.url("CHANNEL️", url="t.me/tgyararlibotlar")],
         ],
     )

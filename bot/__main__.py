@@ -89,9 +89,6 @@ async def _(e):
 async def _(e):
     await ihelp(e)
 
-@bot.on(events.callbackquery.CallbackQuery(data=re.compile("hevci")))
-async def _(e):
-    await hevci(e)
 
 @bot.on(events.callbackquery.CallbackQuery(data=re.compile("beck")))
 async def _(e):

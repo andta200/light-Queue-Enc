@@ -87,8 +87,8 @@ async def start(event):
         buttons=[
             [Button.inline("HELP", data="ihelp")],
             [
-                Button.url("SOURCE (original)", url="github.com/1Danish-00/"),
-                Button.url("SOURCE (edit)", url="github.com/Col-Serra/light-Queue-Enc"),
+                Button.inline("HEVC1", data="hevci"),
+                Button.inline("SOURCE (edit)", url="github.com/Col-Serra/light-Queue-Enc"),
             ],
             [Button.url("CHANNEL️", url="t.me/tgyararlibotlar")],
         ],
@@ -106,6 +106,13 @@ async def ihelp(event):
     await event.edit(
 #       "**🐠 A Quality CompressorQueue**\n\n+This Bot Compress Videos With Negligible Quality Change.\n+Generate Sample Compressed Video\n+Screenshots Too\n+Easy to Use\n-Due to Quality Settings Bot Takes Time To Compress.\nSo Be patience Nd Send videos One By One After Completing.\nDont Spam Bot.\n\nJust Forward Video To Get Options",
         "**SET EXAMPLE:**\n`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`\n\n🖍 ️`-c:v libx264 -pix_fmt yuv420p`\n\n🖍 ️`-vf scale=640:-2`\n\n🖍 ️`-vf '''drawtext=fontfile=font.ttf:fontsize=30:fontcolor=white:bordercolor=black@0.50:x=w/2-tw/2:y=10:box=1:boxcolor=black@0.5:boxborderw=6:text=Konuşanlar TV'''`",
+        buttons=[Button.inline("BACK", data="beck")],
+    )
+
+
+async def hevci(event):
+    await event.edit(
+        "**HEVC1:**\n`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
         buttons=[Button.inline("BACK", data="beck")],
     )
 

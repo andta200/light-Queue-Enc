@@ -88,6 +88,46 @@ async def _(e):
 @bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelp")))
 async def _(e):
     await ihelp(e)
+    
+    
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpbi")))
+async def _(e):
+    await ihelpbi(e)
+
+
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpik")))
+async def _(e):
+    await ihelpik(e)
+
+
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpuc")))
+async def _(e):
+    await ihelpuc(e)
+
+
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpdo")))
+async def _(e):
+    await ihelpdo(e)
+
+
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpbe")))
+async def _(e):
+    await ihelpbe(e)
+
+
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpal")))
+async def _(e):
+    await ihelpal(e)
+
+
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpye")))
+async def _(e):
+    await ihelpye(e)
+
+
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpse")))
+async def _(e):
+    await ihelpse(e)
 
 
 @bot.on(events.callbackquery.CallbackQuery(data=re.compile("beck")))
@@ -154,7 +194,7 @@ async def something():
                 log = int(LOG_CHANNEL)
                 e = await bot.send_message(user, "`▼ Downloading Queue Files ▼`")
                 op = await bot.send_message(
-                    log, "`❔ Currently Downloading A Queued Video…`"
+                    log, "`Currently Downloading A Queued Video…`"
                 )
                 s = dt.now()
                 try:
@@ -205,7 +245,7 @@ async def something():
                     ],
                 )
                 wak = await op.edit(
-                    "`❔ Currently Encoding A Queued Video…`",
+                    "`Currently Encoding A Queued Video…`",
                     buttons=[
                         [Button.inline("CHECK PROGRESS", data=f"stats{wah}")],
                         [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],

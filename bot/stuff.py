@@ -90,6 +90,18 @@ async def start(event):
                 Button.url("SOURCE (original)", url="github.com/1Danish-00/"),
                 Button.url("SOURCE (edit)", url="github.com/Col-Serra/light-Queue-Enc"),
             ],
+            [
+                Button.inline("helpbi", data="ihelpbi"),
+                Button.inline("helpik", data="ihelpik"),
+                Button.inline("helpuc", data="ihelpc"),
+                Button.inline("helpdo", data="ihelpdo"),           
+            ],
+			[
+                Button.inline("helpbe", data="ihelpbe"),
+                Button.inline("helpal", data="ihelpal"),
+                Button.inline("helpye", data="ihelpye"),
+                Button.inline("helpse", data="ihelpse"),           
+            ],
             [Button.url("CHANNEL️", url="t.me/tgyararlibotlar")],
         ],
     )
@@ -97,15 +109,68 @@ async def start(event):
 
 async def help(event):
     await event.reply(
-#       "**🐠 A Quality CompressorQueue**\n\n+This Bot Compress Videos With Negligible Quality Change.\n+Generate Sample Compressed Video\n+Easy to Use\n-Due to Quality Settings Bot Takes Time To Compress.\nSo Be patience Nd Send videos One By One After Completing.\nDont Spam Bot.\n\nJust Forward Video To Get Options"
         "**SET EXAMPLE:**\n`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`\n\n🖍 ️`-c:v libx264 -pix_fmt yuv420p`\n\n🖍 ️`-vf scale=640:-2`\n\n🖍 ️`-vf '''drawtext=fontfile=font.ttf:fontsize=30:fontcolor=white:bordercolor=black@0.50:x=w/2-tw/2:y=10:box=1:boxcolor=black@0.5:boxborderw=6:text=Konuşanlar TV'''`"
     )
 
 
 async def ihelp(event):
     await event.edit(
-#       "**🐠 A Quality CompressorQueue**\n\n+This Bot Compress Videos With Negligible Quality Change.\n+Generate Sample Compressed Video\n+Screenshots Too\n+Easy to Use\n-Due to Quality Settings Bot Takes Time To Compress.\nSo Be patience Nd Send videos One By One After Completing.\nDont Spam Bot.\n\nJust Forward Video To Get Options",
         "**SET EXAMPLE:**\n`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`\n\n🖍 ️`-c:v libx264 -pix_fmt yuv420p`\n\n🖍 ️`-vf scale=640:-2`\n\n🖍 ️`-vf '''drawtext=fontfile=font.ttf:fontsize=30:fontcolor=white:bordercolor=black@0.50:x=w/2-tw/2:y=10:box=1:boxcolor=black@0.5:boxborderw=6:text=Konuşanlar TV'''`",
+        buttons=[Button.inline("BACK", data="beck")],
+    )
+
+
+async def ihelpbi(event):
+    await event.edit(
+        "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
+        buttons=[Button.inline("BACK", data="beck")],
+    )
+
+
+async def ihelpik(event):
+    await event.edit(
+        "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
+        buttons=[Button.inline("BACK", data="beck")],
+    )
+
+async def ihelpuc(event):
+    await event.edit(
+        "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
+        buttons=[Button.inline("BACK", data="beck")],
+    )
+
+
+async def ihelpdo(event):
+    await event.edit(
+        "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
+        buttons=[Button.inline("BACK", data="beck")],
+    )
+
+
+async def ihelpbe(event):
+    await event.edit(
+        "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
+        buttons=[Button.inline("BACK", data="beck")],
+    )
+
+
+async def ihelpal(event):
+    await event.edit(
+        "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
+        buttons=[Button.inline("BACK", data="beck")],
+    )
+
+
+async def ihelpye(event):
+    await event.edit(
+        "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
+        buttons=[Button.inline("BACK", data="beck")],
+    )
+
+
+async def ihelpse(event):
+    await event.edit(
+        "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
         buttons=[Button.inline("BACK", data="beck")],
     )
 
@@ -118,6 +183,18 @@ async def beck(event):
             [
                 Button.url("SOURCE (original)", url="github.com/1Danish-00/"),
                 Button.url("SOURCE (edit)", url="github.com/Col-Serra/light-Queue-Enc"),
+            ],
+            [
+                Button.inline("helpbi", data="ihelpbi"),
+                Button.inline("helpik", data="ihelpik"),
+                Button.inline("helpuc", data="ihelpc"),
+                Button.inline("helpdo", data="ihelpdo"),           
+            ],
+			[
+                Button.inline("helpbe", data="ihelpbe"),
+                Button.inline("helpal", data="ihelpal"),
+                Button.inline("helpye", data="ihelpye"),
+                Button.inline("helpse", data="ihelpse"),           
             ],
             [Button.url("CHANNEL️", url="t.me/tgyararlibotlar")],
         ],

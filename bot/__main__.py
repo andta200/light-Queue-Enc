@@ -90,44 +90,44 @@ async def _(e):
     await ihelp(e)
     
     
-@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpbi")))
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("thelpbi")))
 async def _(e):
-    await ihelpbi(e)
+    await thelpbi(e)
 
 
-@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpik")))
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("thelpik")))
 async def _(e):
-    await ihelpik(e)
+    await thelpik(e)
 
 
-@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpuc")))
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("thelpuc")))
 async def _(e):
-    await ihelpuc(e)
+    await thelpuc(e)
 
 
-@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpdo")))
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("thelpdo")))
 async def _(e):
-    await ihelpdo(e)
+    await thelpdo(e)
 
 
-@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpbe")))
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("thelpbe")))
 async def _(e):
-    await ihelpbe(e)
+    await thelpbe(e)
 
 
-@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpal")))
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("thelpal")))
 async def _(e):
-    await ihelpal(e)
+    await thelpal(e)
 
 
-@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpye")))
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("thelpye")))
 async def _(e):
-    await ihelpye(e)
+    await thelpye(e)
 
 
-@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelpse")))
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("thelpse")))
 async def _(e):
-    await ihelpse(e)
+    await thelpse(e)
 
 
 @bot.on(events.callbackquery.CallbackQuery(data=re.compile("beck")))

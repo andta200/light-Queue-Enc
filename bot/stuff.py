@@ -91,16 +91,16 @@ async def start(event):
                 Button.url("SOURCE (edit)", url="github.com/Col-Serra/light-Queue-Enc"),
             ],
             [
-                Button.inline("helpbi", data="ihelpbi"),
-                Button.inline("helpik", data="ihelpik"),
-                Button.inline("helpuc", data="ihelpc"),
-                Button.inline("helpdo", data="ihelpdo"),           
+                Button.inline("helpbi", data="thelpbi"),
+                Button.inline("helpik", data="thelpik"),
+                Button.inline("helpuc", data="thelpc"),
+                Button.inline("helpdo", data="thelpdo"),           
             ],
 			[
-                Button.inline("helpbe", data="ihelpbe"),
-                Button.inline("helpal", data="ihelpal"),
-                Button.inline("helpye", data="ihelpye"),
-                Button.inline("helpse", data="ihelpse"),           
+                Button.inline("helpbe", data="thelpbe"),
+                Button.inline("helpal", data="thelpal"),
+                Button.inline("helpye", data="thelpye"),
+                Button.inline("helpse", data="thelpse"),           
             ],
             [Button.url("CHANNEL️", url="t.me/tgyararlibotlar")],
         ],
@@ -120,55 +120,55 @@ async def ihelp(event):
     )
 
 
-async def ihelpbi(event):
+async def thelpbi(event):
     await event.edit(
         "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
         buttons=[Button.inline("BACK", data="beck")],
     )
 
 
-async def ihelpik(event):
+async def thelpik(event):
     await event.edit(
         "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
         buttons=[Button.inline("BACK", data="beck")],
     )
 
-async def ihelpuc(event):
-    await event.edit(
-        "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
-        buttons=[Button.inline("BACK", data="beck")],
-    )
-
-
-async def ihelpdo(event):
+async def thelpuc(event):
     await event.edit(
         "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
         buttons=[Button.inline("BACK", data="beck")],
     )
 
 
-async def ihelpbe(event):
+async def thelpdo(event):
     await event.edit(
         "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
         buttons=[Button.inline("BACK", data="beck")],
     )
 
 
-async def ihelpal(event):
+async def thelpbe(event):
     await event.edit(
         "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
         buttons=[Button.inline("BACK", data="beck")],
     )
 
 
-async def ihelpye(event):
+async def thelpal(event):
     await event.edit(
         "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
         buttons=[Button.inline("BACK", data="beck")],
     )
 
 
-async def ihelpse(event):
+async def thelpye(event):
+    await event.edit(
+        "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
+        buttons=[Button.inline("BACK", data="beck")],
+    )
+
+
+async def thelpse(event):
     await event.edit(
         "`/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -s 640x360 -threads 1 '''{}'''`",
         buttons=[Button.inline("BACK", data="beck")],
@@ -185,16 +185,16 @@ async def beck(event):
                 Button.url("SOURCE (edit)", url="github.com/Col-Serra/light-Queue-Enc"),
             ],
             [
-                Button.inline("helpbi", data="ihelpbi"),
-                Button.inline("helpik", data="ihelpik"),
-                Button.inline("helpuc", data="ihelpc"),
-                Button.inline("helpdo", data="ihelpdo"),           
+                Button.inline("helpbi", data="thelpbi"),
+                Button.inline("helpik", data="thelpik"),
+                Button.inline("helpuc", data="thelpc"),
+                Button.inline("helpdo", data="thelpdo"),           
             ],
 			[
-                Button.inline("helpbe", data="ihelpbe"),
-                Button.inline("helpal", data="ihelpal"),
-                Button.inline("helpye", data="ihelpye"),
-                Button.inline("helpse", data="ihelpse"),           
+                Button.inline("helpbe", data="thelpbe"),
+                Button.inline("helpal", data="thelpal"),
+                Button.inline("helpye", data="thelpye"),
+                Button.inline("helpse", data="thelpse"),           
             ],
             [Button.url("CHANNEL️", url="t.me/tgyararlibotlar")],
         ],

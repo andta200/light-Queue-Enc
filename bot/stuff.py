@@ -180,6 +180,7 @@ async def beck(event):
         f"Hi `{event.sender.first_name}`,\n\nThis Is A Bot Which Can Encode Videos.\n\nIt's For Personal Use Only!",
         buttons=[
             [Button.inline("HELP", data="ihelp")],
+            [
                 Button.inline("YTUBE", data="thelpbi"),
                 Button.inline("H264-C28", data="thelpik"),
                 Button.inline("TGAUDIO", data="thelpuc"),

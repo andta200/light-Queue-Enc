@@ -180,17 +180,16 @@ async def beck(event):
         f"Hi `{event.sender.first_name}`,\n\nThis Is A Bot Which Can Encode Videos.\n\nIt's For Personal Use Only!",
         buttons=[
             [Button.inline("HELP", data="ihelp")],
-            [
-                Button.inline("helpbi", data="thelpbi"),
-                Button.inline("helpik", data="thelpik"),
-                Button.inline("helpuc", data="thelpuc"),
-                Button.inline("helpdo", data="thelpdo"),           
+                Button.inline("YTUBE", data="thelpbi"),
+                Button.inline("H264-C28", data="thelpik"),
+                Button.inline("TGAUDIO", data="thelpuc"),
+                Button.inline("HEVCLOGO", data="thelpdo"),           
             ],
 			[
-                Button.inline("helpbe", data="thelpbe"),
-                Button.inline("helpal", data="thelpal"),
-                Button.inline("helpye", data="thelpye"),
-                Button.inline("helpse", data="thelpse"),           
+                Button.inline("HEVC720", data="thelpbe"),
+                Button.inline("HEVC540", data="thelpal"),
+                Button.inline("HEVC480", data="thelpye"),
+                Button.inline("HEVC360", data="thelpse"),           
             ],
 			[
                 Button.url("SOURCE (original)", url="github.com/1Danish-00/"),

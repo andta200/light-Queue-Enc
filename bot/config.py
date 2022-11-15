@@ -28,9 +28,9 @@ try:
         default='ffmpeg -i "{}" -preset superfast -c:v libx265 -crf 28 -vf scale=640:-2 -c:a aac -vbr on -b:a 64k -threads 1 "{}"',
     )
     THUMB = config(
-        "THUMBNAIL", default="https://i.ytimg.com/vi/NXeTO5QM-Gw/maxresdefault.jpg"
+        "THUMBNAIL", default="https://telegra.ph/file/709330fea0103f72c5d5a.jpg"
     )
-    ICON = config("ICON", default="https://i.ytimg.com/vi/NXeTO5QM-Gw/maxresdefault.jpg")
+    ICON = config("ICON", default="https://telegra.ph/file/251d499373a346494a26d.png")
 except Exception as e:
     print("Environment vars Missing")
     print("something went wrong")

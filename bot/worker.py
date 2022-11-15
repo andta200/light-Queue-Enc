@@ -139,7 +139,7 @@ async def stats(e):
         currentTime = ts(int((ed - uptime).seconds) * 1000)
         total, used, free = shutil.disk_usage(".")
         total = get_readable_file_size(total)
-        info = f"Error 404: File | Info not found 🤔\nMaybe bot was restarted\nKindly Resend Media"
+        info = f"Error 404: File | Info not found\nMaybe bot was restarted\nKindly Resend Media"
         await e.answer(
             info,
             cache_time=0,
@@ -281,7 +281,7 @@ async def encod(event):
             oc = event.fwd_from.from_id.user_id
             occ = (await event.client.get_me()).id
             if oc == occ:
-                return await event.reply("`This Video File is already Compressed 😑😑.`")
+                return await event.reply("`This video file is already compressed.`")
         except BaseException:
             pass
         if WORKING or QUEUE:

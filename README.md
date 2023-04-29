@@ -35,16 +35,28 @@ eval - Execute An Argument
 
 ```
 ### Default Audio Language:
-- 1. Language:
+- First Language:
 ```
 
 /set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -vf scale=640:-2 -map 0:v:0 -map 0:a:0 -threads 1 '''{}'''
 
 ```
 
-- 2. Language: 🆗🇹🇷
+```
+
+/set ffmpeg -i '''{}''' -map 0:v:0 -map 0:a:0 -threads 1 '''{}'''
+
+```
+
+- Second Language: 🆗🇹🇷
 ```
 
 /set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -vf scale=640:-2 -map 0:v:0 -map 0:a:1 -threads 1 '''{}'''
+
+```
+
+```
+
+/set ffmpeg -i '''{}''' -map 0:v:0 -map 0:a:1 -threads 1 '''{}'''
 
 ```

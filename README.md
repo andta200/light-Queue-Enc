@@ -34,5 +34,17 @@ bash - Run Bash Commands
 eval - Execute An Argument
 
 ```
-### Changelogs:
-- __[Here](https://col-serra.github.io/light-Queue-Enc/)__ :shipit:
+### Default Audio Language:
+- 1. Language:
+```
+
+/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -vf scale=640:-2 -map 0:v:1 -map 0:a:0 -threads 1 '''{}'''
+
+```
+
+- 2. Language: 🆗🇹🇷
+```
+
+/set ffmpeg -i '''{}''' -preset superfast -c:v libx265 -crf 28 -c:a aac -vbr on -b:a 64k -vf scale=640:-2 -map 0:v:1 -map 0:a:1 -threads 1 '''{}'''
+
+```

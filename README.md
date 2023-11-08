@@ -2,13 +2,20 @@
 *doesn't work in groups yet pull requests to change that are welcomed*
 
 ## Variables
-`APP_ID` `API_HASH` `BOT_TOKEN`
+
+`API_HASH`
+
+`APP_ID`
+
+`BOT_TOKEN`
 
 `OWNER` : Enter The Id Of Auth Users with a spaces between it
 
 `LOG_CHANNEL` : The Id Of your Log Channel Or Group Goes Here
 
 `THUMBNAIL` : Enter telegraph link of a picture for use as Thumbnail.
+
+••• first 6 values ​​are required
 
 `ICON` : Enter The Telegraph link of a picture (png) for use as watermaking image.
 
